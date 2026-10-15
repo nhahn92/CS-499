@@ -1,0 +1,20 @@
+{{!--
+  Error View
+  ----------
+  Displays server-side error information when an Express error handler
+  triggers a render of this template.
+
+  Data Provided by app.js:
+    - message: Human-readable error message
+    - error.status: HTTP status code (e.g., 404, 500)
+    - error.stack: Stack trace (shown only in development mode)
+
+  Notes:
+    - This template is part of the legacy SSR portion of the Travlr app.
+    - The Angular admin application doesn't use this view.
+    - The stack trace is intentionally shown for debugging during development.
+--}}
+
+<h1>{{message}}</h1>
+<h2>{{error.status}}</h2>
+<pre>{{error.stack}}</pre>

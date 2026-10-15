@@ -1,0 +1,68 @@
+{{!--
+  Travel Listing View
+  --------------------
+  Server-side rendered (SSR) page that displays the list of available trips
+  for the public-facing Travlr site.
+
+  Data Provided by travel.js Controller:
+    - title: Page title ("Travlr Getaways")
+    - trips: Array of trip objects retrieved from the API
+        Each trip includes:
+          • code
+          • name
+          • description (HTML allowed)
+          • image filename
+
+  Structure:
+    - Uses header and footer partials
+    - Displays each trip with:
+        • Image
+        • Name
+        • Description
+        • Link to API trip detail endpoint
+
+  Notes:
+    - This is part of the legacy SSR portion of the Travlr application.
+    - The Angular admin app doesn't use this view.
+    - The HTML template originates from a free website template and is used
+      only for the public-facing site.
+--}}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dive Sites - Bhaccasyoniztas Beach Resort Website Template</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+    <div id="background">
+        <div id="page">
+            {{> header}}
+            <div id="contents">
+                <div class="box">
+                    <div>
+                        <div class="body">
+                            <h1>Travel</h1>
+                            <ul id="sites">
+                                {{#each trips}}
+                                    <li>
+                                        <a href="/api/trips/{{this.code}}">
+                                            <img src="/images/{{this.image}}" alt="Img">
+                                        </a>
+                                        <h2>
+                                            <a href="/travel">{{this.name}}</a>
+                                        </h2>
+                                        <p>{{{this.description}}}</p>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{> footer}}
+    </div>
+</body>
+</html>
